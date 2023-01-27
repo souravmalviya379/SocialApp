@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/css/_header.css">
+<header>
+    
+    <h2>
+        <%= title %> | SocialApp
+    </h2>
+    
+    <div id="links">
+        <% if(locals.user){ %>
+            <a href="/"> Home </a> 
+            <a href="/users">
+                <i class="fa-regular fa-user"></i>
+                <%= locals.user.name %>
+            </a>
+            <a href="/users/sign-out">
+                <i class="fa-solid fa-right-from-bracket"></i> Sign-out
+            </a>
+        <% }else { %> 
+            <a href="/"> Home </a>
+            <a href="/users/sign-in">Sign-In</a>
+            <a href="/users/sign-up">Sign-Up</a>
+        <% } %>
+    </div>
+</header>
+
+<script>
+    
+</script>

@@ -1,6 +1,8 @@
 const development = {
     name: 'development',
-    port: 8000
+    asset_path: '/assets',
+    port: 8000,
+    db: 'SocialApp_DB'
 }
 
 module.exports = development;

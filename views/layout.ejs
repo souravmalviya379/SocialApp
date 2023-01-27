@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- cdn for noty.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
+    <title>
+        <%= title %>
+    </title>
+
+    <%- style %>
+</head>
+
+<body>
+
+    <%- include('_header') %>
+
+    <%- body %>
+
+    <%- include('_footer') %>
+
+    <%- script %>
+
+</body>
+
+</html>

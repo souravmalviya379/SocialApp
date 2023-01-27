@@ -1,0 +1,35 @@
+header{
+    background-color: purple;
+    color: white;
+    height: 4rem;
+    border-radius: 10px;
+
+    h2{
+        display: inline-block;
+        width: 30%;
+        margin-left: 15px;
+        color: white;
+    }
+
+    #links{
+        display: inline-block;
+        position: absolute;
+        right: 10px;
+
+        a{
+            margin-top: 1rem;
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 5px;
+            margin-right: 3rem;
+        }
+    
+        a:hover{
+            color: lightgrey;
+            text-shadow: 5px 5px 5px 5px white;
+        }
+    }
+
+}
