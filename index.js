@@ -10,7 +10,8 @@ const session = require('express-session');     //used for session cookie
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongo');
-
+const flash = require('connect-flash');
+const flashMiddleware = require('./config/flash_middleware');
 
 //sass middleware setup
 if(env.name == 'development'){
@@ -58,6 +59,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+
+app.use(flash());
+app.use(flashMiddleware.setFlash);
 
 app.use('/', require('./routes'));
 

@@ -1,6 +1,6 @@
 const User = require("../models/user");
 
-module.exports.profile = function(req, res){
+module.exports.myprofile = function(req, res){
     if(! req.isAuthenticated()){
         return res.redirect('/users/sign-in');
     }
@@ -36,7 +36,7 @@ module.exports.create = function(req, res){
             User.create(req.body, function(err, user){
                 if(err){console.log('Error in creating user while signing up!'); return;}
                 
-                // req.flash('success', 'You registered successfully !!');
+                req.flash('success', 'You Registered successfully !!');
                 return res.redirect('/users/sign-in');
             })
         }else{
@@ -47,6 +47,7 @@ module.exports.create = function(req, res){
 }
 
 module.exports.createSession = function(req, res){
+    req.flash('success', 'Logged in !!');
     return res.redirect('/');
 }
 
@@ -56,4 +57,14 @@ module.exports.destroySession = function(req, res){
 
         return res.redirect('/');
     })
+}
+
+module.exports.profile = async function(req, res){
+    let id = req.params.id;
+    let user = await User.findById(id);
+
+    return res.render('profile', {
+        profile_user: user,
+        title: "Profile Page"
+    });
 }

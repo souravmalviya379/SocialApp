@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const env = require('./environment');
 mongoose.set('strictQuery', true);
+const env = require('./environment');
 
 mongoose.connect('mongodb://127.0.0.1/'+env.db);
 
