@@ -5,7 +5,10 @@ module.exports.myprofile = function(req, res){
         return res.redirect('/users/sign-in');
     }
 
-    return res.render('profile', {title: 'My Profile'});
+    return res.render('profile', {
+        title: 'My Profile',
+        profile_user:req.user
+    });
 }
 
 module.exports.signUp = function(req, res){

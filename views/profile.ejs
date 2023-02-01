@@ -1,4 +1,38 @@
+<style>
+    input{
+        display: block;
+        width: 50%;
+        margin: auto;
+        padding: 10px;
+        color: darkgrey;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    button{
+        display: block;
+        margin: auto;
+        width: 50%;
+        height: 2.5rem;
+        font-size: 1.3rem;
+    }
+</style>
+
+
 <h1 style="text-align: center;"> <%= profile_user.name %>  Profile</h1>
+
+<% if(locals.user.id == profile_user.id) { %>
+    
+    <form action="/users/update/<%= locals.user._id %>" method="post">
+        <input type="text" name="name" placeholder="Your name" value="<%= profile_user.name %>" required>
+        <input type="email" name="email" placeholder="Your email" value="<%= profile_user.email %>" required>
+        
+        <input type="file" name="avatar" placeholder="Profile Picture">
+        
+        <button type="submit">
+            Update Profile
+        </button>
+    </form>
+<% } %> 
 
 <h3>
     Name: <%= profile_user.name %><br>
