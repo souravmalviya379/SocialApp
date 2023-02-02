@@ -26,6 +26,10 @@ if(env.name == 'development'){
 
 //static path setup for css, js and images files
 app.use(express.static(path.join(__dirname, env.asset_path)));
+
+//make the uploads path available to the browser
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
 app.use(express.urlencoded({extended: false}));
 
 //express layout setup

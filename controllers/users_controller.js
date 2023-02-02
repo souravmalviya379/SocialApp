@@ -1,4 +1,7 @@
 const User = require("../models/user");
+const fs = require('fs');
+const path = require('path');
+
 
 module.exports.myprofile = function(req, res){
     if(! req.isAuthenticated()){
@@ -70,4 +73,39 @@ module.exports.profile = async function(req, res){
         profile_user: user,
         title: "Profile Page"
     });
+}
+
+module.exports.update = async function(req, res){
+    if(req.user.id == req.params.id){
+        try {
+            let user = await User.findById(req.params.id);
+            User.uploadedAvatar(req, res, (err)=>{
+                if(err){console.log('**Multer error : ', err); return;}
+
+                user.name = req.body.name;
+                user.email = req.body.email;
+
+                if(req.file){
+                    
+                    //removing previousely present avatar before adding new one
+                    if(user.avatar){
+                        fs.unlinkSync(path.join(__dirname, '..', user.avatar));
+                    }
+
+                    //this is saving the path of uploaded file into the avatar field in User
+                    user.avatar = User.avatarPath + '/' + req.file.filename;
+                }
+                user.save();
+                return res.redirect('back');
+            })
+
+        } catch (err) {
+            req.flash('error', err);
+            console.log('Error while updating profile : ',err);
+            return res.redirect('back');
+        }
+    }else{  
+        req.flash('error', 'Unauthorized !!');
+        return res.status(401).send('Unauthorized !!');
+    }
 }

@@ -10,6 +10,6 @@ router.post('/create-session',passport.authenticate('local', {failureRedirect: '
 router.post('/create', usersController.create);
 router.get('/sign-out', usersController.destroySession);
 router.get('/profile/:id', usersController.profile);
-
+router.post('/update/:id', usersController.update);
 
 module.exports = router;
