@@ -9,6 +9,7 @@ const db = require('./config/mongoose');
 const session = require('express-session');     //used for session cookie
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const passportJWT = require('./config/passport-jwt-strategy');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const flashMiddleware = require('./config/flash_middleware');
@@ -43,7 +44,7 @@ app.set('views', './views');
 
 app.use(session({
     name: 'socialapp',
-    secret: 'blahsomething',
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {
