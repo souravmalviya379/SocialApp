@@ -1,6 +1,6 @@
 const development = {
     name: 'development',
-    asset_path: '/assets',
+    asset_path: './assets',
     port: 8000,
     db: 'SocialApp_DB',
     session_cookie_key: process.env.SOCIALAPP_SESSION_COOKIE_KEY,

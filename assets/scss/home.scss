@@ -3,15 +3,98 @@ h1{
 }
 
 #feed-posts{
-    width: 69%;
+    width: 79%;
     display: inline-block;   
+
+    #new-post-form{
+        box-sizing: border-box;
+        margin: 20px auto;
+        width: 80%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: rgb(225, 208, 225);
+        border-radius: 10px;
+        color: darkgrey;
+
+        textarea{
+            box-sizing: border-box;
+            font-size: 1.2rem;
+            padding: 15px;
+            width: 100%;
+            display: block;
+            height: 150px;
+            border-radius: 10px;
+        }
+
+        .post-options{
+            width: inherit;
+
+            input{
+                font-size: 1.1rem;
+                margin: 10px;
+                color: darkgrey;
+            }
+        }
+    }
 }
 
 #friends-list{
-    width: 28%;
+    width: 18%;
     display: inline-block;
     vertical-align: top;
     margin: 10px;
     padding: 10px;
     border-left: 1px solid grey;
 }
+
+#posts-list{
+    display: flex;
+    list-style: none;
+    .post{
+        width: 300px;
+        height: 500px;
+        margin: 20px;
+        background-color: grey;
+        box-sizing: border-box;
+        position: relative;
+        border-radius: 10px;
+
+        .post-container{
+            .post-user{
+                display: inline-block;
+                margin-top: 5px;
+                font-size: 1.3rem;
+                padding-left: 10px;
+                color: white;
+            }
+
+            .post-content{
+                padding: 10px;
+                height: 250px;
+                margin: 10px;
+                background-color: white;
+                border-radius: 10px;
+            }
+        }
+
+        .delete-post{
+            position: absolute;
+            display: block;
+            bottom: 5px;
+            left: 10px;
+            border: 1px solid white;
+            border-radius: 10px;
+            padding: 5px;
+            width: 270px;
+            text-align: center;
+            font-size: 1.3rem;
+            background-color: rgb(245, 123, 143);
+            color: white;
+            text-decoration: none;
+        }
+        .delete-post:hover{
+            background-color: red;
+        }
+
+    }
+}
+

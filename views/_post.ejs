@@ -1,15 +1,15 @@
 
-<li id="<%= post.id %>">
+<li id="<%= post.id %>" class="post">
     <div class="post-container">
-        <span class="post-user"> <%= post.user.name %> </span>
+        <span class="post-user">
+            <img src="<%= post.user.avatar %>" alt="" width="20" height="20" style="vertical-align: top;">  
+            <%= post.user.name %> 
+        </span>
         <div class="post-content">
             <%= post.content %>
         </div>
-        <a href="/posts/destroy/<%= post._id %>">
-            <img src="images/delete.png" alt="Delete" width="25" height="20">
-        </a>
     </div>
-
+    
     <div class="comments-container">
         <% for(let comment of post.comments){ %>
             <div class="comment-content">
@@ -33,4 +33,12 @@
             </form>
         <% } %>
     </div>
+
+
+    <!-- If user logged in is same as user who done post then only show delete option -->
+    <% if(locals.user.id == post.user.id) { %>
+        <a href="/posts/destroy/<%= post._id %>" class="delete-post">
+            Delete Post <img src="images/delete.png" alt="Delete" width="25" height="20">
+        </a>
+    <% } %>
 </li>
